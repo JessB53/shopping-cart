@@ -37,6 +37,8 @@ def to_usd(my_price):
 
 #INFO CAPTURE
 
+selected_products = []
+
 
 while True:    
     selected_id = input("Please input a product identifier or 'Done' if there are no more items:") #> id # is string
@@ -45,12 +47,14 @@ while True:
     else: 
         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
         matching_product = matching_products[0]
-        print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
+        selected_products.append(matching_product["id"])
+        #print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
+
 
 #selected_products = matching_products["id"]
 
 #print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:")
-#print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:" + str(matching_products))
+print("SHOPPING CART ITEM IDENTIFIERS INCLUDE: " + str(selected_products))
 
 # print(x)
 
