@@ -39,31 +39,48 @@ def to_usd(my_price):
 
 total_price = 0
 
-# selected_products = []
+product_ids = []
 
-# while True:    
-#     selected_id = input("Please input a product identifier or 'Done' if there are no more items:") #> id # is string
-#     if selected_id == "Done":
-#         break
-#     else: 
-#         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-#         matching_product = matching_products[0]
-#         selected_products.append(matching_product["id"])
-#         #print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
+while True:    
+    selected_id = input("Please input a product identifier or 'Done' if there are no more items:") #> id # is string
+    if selected_id == "Done":
+        break
+    else: 
+        matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+        matching_product = matching_products[0]
+        product_ids.append(matching_product["id"])
 
+#OUTPUT
 
+print("---------------------------------")
+print("JLB GROCERY") 
+print("WWW.JLBGROCERY.COM")
+print("---------------------------------")
+from datetime import datetime
+str(datetime.now())
+print("CHECKOUT AT: " + str(datetime.now()))
 
-# print("SHOPPING CART ITEM IDENTIFIERS INCLUDE: " + str(selected_products))
+# from time import gmtime, strftime
+# #strftime("%a, %d %b %Y %H:%M", gmtime())
+# print(str(today.strftime("%a, %d %b %Y %H:%M"))) --> REVISIT TO FORMAT
 
-#LOOK UP
+print("---------------------------------")
+print("SELECTED PRODUCTS:")
 
-product_ids = [1, 8, 6, 16, 6] # temporary list of valid ids for testing purposes
-
-print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:", product_ids)
-
+#LOOKUP
 for product_ids in product_ids:
     matching_products = [p for p in products if str(p["id"]) == str(product_ids)]
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
-    print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
-print("THE TOTAL PRICE IS " + str(total_price))
+    print("+ " + str(matching_product["name"]) + " (" + str(to_usd(matching_product["price"])) + ")")
+print("---------------------------------")
+
+print("SUBTOTAL: " + str(to_usd(total_price)))
+tax = total_price * .0875
+print("TAX: " + str(to_usd(tax)))
+total = total_price + tax
+print("TOTAL: " + str(to_usd(total)))
+
+print("---------------------------------")
+print("THANKS, SEE YOU AGAIN SOON!")
+print("---------------------------------")
