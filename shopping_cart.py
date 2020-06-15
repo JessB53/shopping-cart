@@ -53,7 +53,6 @@ while True:
     if len(matching_products) == 0:
         print("Item Not Found. Try again:") 
         continue
-    #selected_id is not in p in products if str(p["id']) ##  selected_id ##### COME
     matching_product = matching_products[0]
     product_ids.append(matching_product["id"])
 
@@ -66,7 +65,7 @@ print("---------------------------------")
 
 from datetime import datetime
 
-print("CHECKOUT AT: " + datetime.today().strftime('%Y-%m-%d %I:%M %p'))
+print("CHECKOUT AT: " + datetime.today().strftime('%Y-%m-%d %I:%M %p')) #>https://stackoverflow.com/questions/32490629/getting-todays-date-in-yyyy-mm-dd-in-python
 print("---------------------------------")
 print("SELECTED PRODUCTS:")
 
