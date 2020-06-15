@@ -45,10 +45,17 @@ while True:
     selected_id = input("Please input a product identifier or 'Done' if there are no more items:") #> id # is string
     if selected_id == "Done":
         break
-    else: 
-        matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-        matching_product = matching_products[0]
-        product_ids.append(matching_product["id"])
+    elif selected_id == "done":
+        break
+    elif selected_id == "DONE":
+        break
+    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+    if len(matching_products) == 0:
+        print("Item Not Found. Try again:") 
+        continue
+    #selected_id is not in p in products if str(p["id']) ##  selected_id ##### COME
+    matching_product = matching_products[0]
+    product_ids.append(matching_product["id"])
 
 #OUTPUT
 
@@ -56,14 +63,10 @@ print("---------------------------------")
 print("JLB GROCERY") 
 print("WWW.JLBGROCERY.COM")
 print("---------------------------------")
+
 from datetime import datetime
-str(datetime.now())
-print("CHECKOUT AT: " + str(datetime.now()))
 
-# from time import gmtime, strftime
-# #strftime("%a, %d %b %Y %H:%M", gmtime())
-# print(str(today.strftime("%a, %d %b %Y %H:%M"))) --> REVISIT TO FORMAT
-
+print("CHECKOUT AT: " + datetime.today().strftime('%Y-%m-%d %I:%M %p'))
 print("---------------------------------")
 print("SELECTED PRODUCTS:")
 
